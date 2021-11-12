@@ -7,3 +7,5 @@ Basic To-Do app created wit the React
 => Filter out the active and completed Tasks.
 
 Live link:https://task-notes.netlify.app/
+
+Happy coding :)
