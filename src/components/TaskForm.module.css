@@ -1,0 +1,31 @@
+form {
+  margin: 20px;
+  padding: 10px;
+}
+label {
+  font-weight: 600;
+  font-size: 20px;
+  /* color: pink; */
+}
+.itask {
+  display: block;
+  width: 80%;
+  margin: 10px 0 5px 0;
+  line-height: 30px;
+  border-radius: 3px;
+  border: 1px solid #bbb;
+}
+.invalid {
+  border-color: red;
+}
+.itask:focus {
+  outline: 1px solid #8aecdc;
+}
+.button {
+  background-color: #8aecdc;
+  border-radius: 5px;
+  border: 1px solid #8aecdc;
+  padding: 8px;
+  width: 5rem;
+  font-size: 15px;
+}

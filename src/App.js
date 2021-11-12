@@ -1,23 +1,74 @@
-import logo from './logo.svg';
-import './App.css';
+import TaskList from "./components/TaskList";
+import TaskForm from "./components/TaskForm";
+import TaskFilter from "./components/TaskFilter";
+import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const tasks = [
+    { id: 0, task: "complete the assignment" },
+    { id: 1, task: "Finish the course" },
+  ];
+  const [stateTasks, changeTaskList] = useState(tasks);
+  const [completedTasks, changecompletedList] = useState([]);
+  const [filter, changefilter] = useState("active");
+  function getTaskHandler(data) {
+    changeTaskList((previousState) => {
+      return [...previousState, { id: new Date().getSeconds(), task: data }];
+    });
+  }
+
+  function deleteHandler(id) {
+    let arr = [];
+    stateTasks.forEach((task) => {
+      if (id !== task.id) {
+        console.log(id, task.id);
+        arr.push(task);
+      } else {
+        changecompletedList((prev) => [...prev, task]);
+      }
+      changeTaskList(arr);
+    });
+
+    // changeTaskList((previousState) => {
+    //   let arr = previousState.filter((task) => {
+    //     if (id === task.id) {
+    //       console.log("checl");
+    //       changecompletedList((prev) => [...prev, task]);
+    //     }
+    //     return id !== task.id;
+    //   });
+    //   return arr;
+    // });
+  }
+  function filterHandler(status) {
+    changefilter(status);
+  }
+  let list = filter === "active" ? stateTasks : completedTasks;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+    <div className="app">
+      <div className="container">
+        <TaskForm getData={getTaskHandler}></TaskForm>
+      </div>
+      <div className="task-filter">
+        <TaskFilter
+          currenttasks={completedTasks}
+          getOption={filterHandler}
+        ></TaskFilter>
+      </div>
+      {list.length === 0 ? (
+        <p className="mssg">
+          {list === stateTasks
+            ? "No Tasks..Wanna add any!?"
+            : "No completed tasks:("}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      ) : (
+        <TaskList
+          test={completedTasks}
+          listItems={list}
+          deleteTask={deleteHandler}
+        ></TaskList>
+      )}
     </div>
   );
 }
