@@ -1,5 +1,5 @@
 .container {
-  width: 60vw;
+  width: 40vw;
   min-width: 300px;
   margin: 30px auto;
   max-width: 95%;
@@ -14,7 +14,7 @@
   font-weight: 500;
 }
 .task-filter {
-  width: 60vw;
+  width: 40vw;
   min-width: 300px;
   margin: 30px auto;
   max-width: 95%;
