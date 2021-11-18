@@ -23,7 +23,7 @@ const TaskForm = (props) => {
     setValid(data);
   }
   return (
-    <div>
+    <>
       {!valid && (
         <Modal closeModal={modalHandler} mssg="Please enter the text!"></Modal>
       )}
@@ -42,7 +42,7 @@ const TaskForm = (props) => {
           Add Task
         </button>
       </form>
-    </div>
+    </>
   );
 };
 export default TaskForm;

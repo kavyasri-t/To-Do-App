@@ -3,6 +3,7 @@ import TaskForm from "./components/TaskForm";
 import TaskFilter from "./components/TaskFilter";
 import "./App.css";
 import { useState } from "react";
+import React from "react";
 
 function App() {
   const tasks = [
@@ -47,7 +48,7 @@ function App() {
   }
   let list = filter === "active" ? stateTasks : completedTasks;
   return (
-    <div className="app">
+    <React.Fragment>
       <div className="container">
         <TaskForm getData={getTaskHandler}></TaskForm>
       </div>
@@ -64,14 +65,9 @@ function App() {
             : "No completed tasks:("}
         </p>
       ) : (
-        <TaskList
-          test={completedTasks}
-          listItems={list}
-          test={completedTasks}
-          deleteTask={deleteHandler}
-        ></TaskList>
+        <TaskList listItems={list} deleteTask={deleteHandler}></TaskList>
       )}
-    </div>
+    </React.Fragment>
   );
 }
 
