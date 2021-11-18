@@ -33,7 +33,7 @@ function App() {
     // changeTaskList((previousState) => {
     //   let arr = previousState.filter((task) => {
     //     if (id === task.id) {
-    //       console.log("checl");
+    //       console.log("check");
     //       changecompletedList((prev) => [...prev, task]);
     //     }
     //     return id !== task.id;
@@ -41,6 +41,7 @@ function App() {
     //   return arr;
     // });
   }
+  console.log(stateTasks, completedTasks);
   function filterHandler(status) {
     changefilter(status);
   }
@@ -66,6 +67,7 @@ function App() {
         <TaskList
           test={completedTasks}
           listItems={list}
+          test={completedTasks}
           deleteTask={deleteHandler}
         ></TaskList>
       )}
